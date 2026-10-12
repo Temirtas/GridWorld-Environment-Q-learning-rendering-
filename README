@@ -2,7 +2,7 @@
 
 A custom GridWorld environment built with **Python, Gymnasium, NumPy, and Pygame**, where a reinforcement learning agent learns to navigate a grid and reach a target using **Q-learning**.
 
-## Project Preview
+gridworld-demo.png
 
 ![GridWorld environment showing the agent navigating toward the target](assets/gridworld-demo.png)
 
