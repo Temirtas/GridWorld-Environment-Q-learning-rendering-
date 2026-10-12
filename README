@@ -1,0 +1,100 @@
+# GridWorld Environment with Q-Learning
+
+A custom GridWorld environment built with **Python, Gymnasium, NumPy, and Pygame**, where a reinforcement learning agent learns to navigate a grid and reach a target using **Q-learning**.
+
+## Project Preview
+
+![GridWorld environment showing the agent navigating toward the target](assets/gridworld-demo.png)
+
+*The blue circle represents the agent, and the red square represents the target.*
+
+## Overview
+
+This project implements a custom 5×5 GridWorld environment compatible with Gymnasium and trains an agent to reach a randomly positioned target.
+
+The agent learns through trial and error, using rewards and a Q-table to improve its decisions over multiple training episodes. After training, the learned policy is demonstrated visually using Pygame.
+
+## Key Features
+
+- **Custom Gymnasium environment:** Defines the observation space, action space, rewards, and episode termination.
+- **Q-learning:** Implements the Q-learning update rule to estimate the value of each action in a given state.
+- **Epsilon-greedy exploration:** Balances random exploration with choosing actions that currently have the highest estimated value.
+- **Exploration decay:** Gradually reduces the exploration rate during training.
+- **Pygame visualization:** Renders the grid, agent, and target in a graphical window.
+- **Q-table persistence:** Saves the learned Q-table to `q_table.npy` for later use.
+
+## Reinforcement Learning Setup
+
+| Parameter | Value |
+|---|---|
+| Grid size | 5 × 5 |
+| Algorithm | Tabular Q-learning |
+| Training episodes | 5,000 |
+| Learning rate (α) | 0.1 |
+| Discount factor (γ) | 0.95 |
+| Initial exploration rate (ε) | 1.0 |
+| Minimum exploration rate | 0.05 |
+| Exploration decay | 0.999 |
+| Actions | Right, Up, Left, Down |
+
+The agent receives a reward of **+1** when it reaches the target and 0 otherwise. Its state includes both the agent's position and the target's position.
+
+The Q-learning update is:
+
+\[
+Q(s,a) \leftarrow Q(s,a) + \alpha
+\left[r + \gamma \max_{a'}Q(s',a')-Q(s,a)\right]
+\]
+
+## Installation
+
+Clone the repository and enter its directory:
+
+```bash
+git clone https://github.com/Temirtas/GridWorld-Environment-Q-learning-rendering-.git
+cd GridWorld-Environment-Q-learning-rendering-
+```
+
+Install the required libraries:
+
+```bash
+pip install numpy gymnasium pygame
+```
+
+## Run the Project
+
+Start training and watch the trained agent:
+
+```bash
+python train_qlearning
+```
+
+The script trains the agent for 5,000 episodes, prints training statistics every 500 episodes, saves the Q-table as `q_table.npy`, and launches a Pygame visualization of the trained policy.
+
+## Project Structure
+
+```text
+GridWorld-Environment-Q-learning-rendering-/
+├── environment.py    # Custom Gymnasium environment
+├── train_qlearning   # Q-learning training and visualization
+├── q_table.npy       # Saved Q-table
+├── assets/
+│   └── gridworld-demo.png
+└── README.md
+```
+
+## What I Learned
+
+- Implementing a custom environment using the Gymnasium API.
+- Understanding states, actions, rewards, and episode termination.
+- Implementing tabular Q-learning and the Bellman-based update rule.
+- Applying epsilon-greedy exploration and exploration decay.
+- Tracking training performance and visualizing a learned policy.
+- Connecting reinforcement learning theory with a working simulation.
+
+## Future Improvements
+
+- Compare different learning rates and exploration schedules.
+- Plot learning curves for success rate and episode length.
+- Experiment with larger grids and obstacles.
+- Compare Q-learning with other reinforcement learning algorithms.
